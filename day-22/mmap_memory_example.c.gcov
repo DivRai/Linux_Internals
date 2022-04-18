@@ -1,0 +1,26 @@
+        -:    0:Source:mmap_memory_example.c
+        -:    0:Graph:mmap_memory_example.gcno
+        -:    0:Data:mmap_memory_example.gcda
+        -:    0:Runs:1
+        -:    1:#include<stdio.h>
+        -:    2:#include<string.h>
+        -:    3:#include<sys/stat.h>
+        -:    4:#include<fcntl.h>
+        -:    5:#include<sys/mman.h>
+        -:    6:
+        1:    7:int main()
+        -:    8:{
+        -:    9:	char *c;
+        -:   10:	
+        1:   11:	c = mmap(0, 50, PROT_READ|PROT_WRITE, MAP_ANONYMOUS|MAP_PRIVATE, -1, 0);  // msg success
+        1:   11-block  0
+        1:   12:	perror("mmap");
+        -:   13:	
+        1:   14:	strcpy(c,"linuxkernel");  // kernel region in US
+        1:   15:	printf("%s\n",c);
+        -:   16:	
+        -:   17:	// deallocate all resources
+        1:   18:	munmap(c,50);  // malloc after free
+        -:   19:	
+        1:   20:	return 0;
+        -:   21:}

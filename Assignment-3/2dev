@@ -1,0 +1,28 @@
+assi3.c: In function ‘main’:
+assi3.c:26:2: warning: ‘pthread_attr_getstackaddr’ is deprecated [-Wdeprecated-declarations]
+   26 |  pthread_attr_getstackaddr(&Attr,&Stk);
+      |  ^~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from assi3.c:1:
+/usr/include/pthread.h:331:12: note: declared here
+  331 | extern int pthread_attr_getstackaddr (const pthread_attr_t *__restrict
+      |            ^~~~~~~~~~~~~~~~~~~~~~~~~
+assi3.c:28:33: warning: format ‘%x’ expects argument of type ‘unsigned int’, but argument 2 has type ‘void *’ [-Wformat=]
+   28 |  printf("Default stack: Addr=%08x default size = %ld\n",Stk,Siz);
+      |                              ~~~^                       ~~~
+      |                                 |                       |
+      |                                 unsigned int            void *
+      |                              %08p
+assi3.c:32:35: warning: format ‘%x’ expects argument of type ‘unsigned int’, but argument 2 has type ‘void *’ [-Wformat=]
+   32 |  printf("MALLOC checking: Addr=%08x and Size=%ld\n",my_stack,my_stksize);
+      |                                ~~~^                 ~~~~~~~~
+      |                                   |                 |
+      |                                   unsigned int      void *
+      |                                %08p
+assi3.c:40:39: warning: format ‘%x’ expects argument of type ‘unsigned int’, but argument 2 has type ‘void *’ [-Wformat=]
+   40 |  printf("Newly defined stack: Addr=%08x and Size=%ld\n",Stk,Siz);
+      |                                    ~~~^                 ~~~
+      |                                       |                 |
+      |                                       unsigned int      void *
+      |                                    %08p
+/usr/bin/ld: /tmp/ccNUHUHv.o: in function `main':
+assi3.c:(.text+0x72): warning: the use of `pthread_attr_getstackaddr' is deprecated, use `pthread_attr_getstack'
